@@ -77,7 +77,7 @@ ftable(tab)
 
 ## COMPARE PARTICIPANTS BETWEEN CONDITIONS
 
-part <- aggregate(cbind(Age, Lextale, ProficiencySelf, YearsOfDutch, Exposure, OtherLanguages, BigVocabulary, OnlyMeaning, UnknownWords, SmallDifferences, KnownBeforePassive) ~ Participant + Condition, exp, mean, na.action = NULL)
+part <- aggregate(cbind(Age, Lextale, ProficiencySelf, YearsOfDutch, Exposure, OtherLanguages, BigVocabulary, OnlyMeaning, UnknownWords, SmallDifferences, PassiveKnowledge) ~ Participant + Condition, exp, mean, na.action = NULL)
 
 # Means
 tapply(part$Age, part$Condition, mean); tapply(part$Age, part$Condition, sd)
@@ -86,11 +86,11 @@ tapply(part$ProficiencySelf, part$Condition, mean); tapply(part$ProficiencySelf,
 tapply(part$YearsOfDutch, part$Condition, mean); tapply(part$YearsOfDutch, part$Condition, sd)
 tapply(part$Exposure, part$Condition, mean); tapply(part$Exposure, part$Condition, sd)
 tapply(part$OtherLanguages, part$Condition, mean); tapply(part$OtherLanguages, part$Condition, sd)
-
 tapply(part$BigVocabulary, part$Condition, mean); tapply(part$BigVocabulary, part$Condition, sd) # "It is important to me to have a large Dutch vocabulary"
 tapply(part$OnlyMeaning, part$Condition, mean); tapply(part$OnlyMeaning, part$Condition, sd) # "The way in which something is said is not important to me, only what it means"
 tapply(part$UnknownWords, part$Condition, mean); tapply(part$UnknownWords, part$Condition, sd) # "When I hear a Dutch word I don't know, I try to learn it"
 tapply(part$SmallDifferences, part$Condition, mean); tapply(part$SmallDifferences, part$Condition, sd) # "I pay attention to subtle differences between German and Dutch"
+tapply(part$PassiveKnowledge, part$Condition, mean); tapply(part$PassiveKnowledge, part$Condition, sd)
 
 # One-way anova's
 anAge <- lm(Age~Condition, data = part); summary(anAge)
